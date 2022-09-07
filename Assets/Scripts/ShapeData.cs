@@ -4,21 +4,21 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
-
 public class ShapeData : ScriptableObject
 {
     [System.Serializable]
-
     public class Row
     {
         public bool[] column;
         private int _size = 0;
 
-        public Row(){}
+        public Row()
+        {
+        }
 
         public Row(int size)
         {
-           CreateRow(size);
+            CreateRow(size);
         }
 
         public void CreateRow(int size)
@@ -30,7 +30,7 @@ public class ShapeData : ScriptableObject
 
         public void ClearRow()
         {
-            for(int i=0; i< _size; i++)
+            for (int i = 0; i < _size; i++)
             {
                 column[i] = false;
             }
@@ -43,7 +43,7 @@ public class ShapeData : ScriptableObject
 
     public void Clear()
     {
-        for(var i = 0; i < rows; i++)
+        for (var i = 0; i < rows; i++)
         {
             board[i].ClearRow();
         }
@@ -53,10 +53,10 @@ public class ShapeData : ScriptableObject
     {
         board = new Row[rows];
 
-        for(var i = 0; i<rows; i++)
+        
+        for (var i = 0; i < rows; i++)
         {
             board[i] = new Row(columns);
         }
     }
-   
 }
