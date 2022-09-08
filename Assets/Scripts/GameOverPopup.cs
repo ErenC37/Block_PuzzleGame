@@ -31,6 +31,6 @@ public class GameOverPopup : MonoBehaviour
         gameOverPopup.SetActive(true);
         loosePopup.SetActive(false);
         newBestScorePopup.SetActive(true);
-
+        
     }
 }

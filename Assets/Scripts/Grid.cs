@@ -21,6 +21,9 @@ public class Grid : MonoBehaviour
 
     private LineIndicator _lineIndicator;
 
+    IEnumerator co;
+
+    CountDown countDown;
 
     private void OnEnable()
     {
@@ -35,6 +38,7 @@ public class Grid : MonoBehaviour
     void Awake()
     {
         shapeStorage = FindObjectOfType<ShapeStorage>();
+        countDown = FindObjectOfType<CountDown>();
     }
 
 
@@ -322,7 +326,10 @@ public class Grid : MonoBehaviour
             else
             {
                 GameEvents.GameOver(false);
+                countDown.coUpdate();
             }
+
+           
         }
     }
 

@@ -11,9 +11,11 @@ public class CountDown : MonoBehaviour
 
    [SerializeField] private TMP_Text _timerText;
 
-   [SerializeField] public float _currentTime;
+   [SerializeField] static public float _currentTime;
 
-   [SerializeField] private float _duration;
+   [SerializeField]  private float _duration;
+
+   IEnumerator co;
 
 
    
@@ -21,8 +23,14 @@ public class CountDown : MonoBehaviour
    {
     _currentTime = _duration;
     _timerText.text = _currentTime.ToString();
-    StartCoroutine(UpdateTime());
+        co = UpdateTime();
+    StartCoroutine(co);
    }
+
+   public void coUpdate()
+    {
+        StopCoroutine(co);   
+    }
 
     void Update()
     {
@@ -30,6 +38,7 @@ public class CountDown : MonoBehaviour
         {
            GameEvents.GameOver(false);
         }
+
     }
 
    
