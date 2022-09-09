@@ -260,40 +260,40 @@ public class Grid : MonoBehaviour
         return linesCompleted;
     }
 
-    [ContextMenu("Run Rotater")]
     private void Rotater()
     {
-       
-        
         for (var index = 0; index < shapeStorage.shapeList.Count; index++)
         {
             if (shapeStorage.shapeList[index].CurrentShapeData)
             {
-                ShapeData tempData = ScriptableObject.CreateInstance<ShapeData>();
-                tempData.rows = shapeStorage.shapeList[index].CurrentShapeData.columns;
-                tempData.columns = shapeStorage.shapeList[index].CurrentShapeData.rows;
-                tempData.CreateNewBoard();
-            
-                
-            
-                for (int i = 0; i < shapeStorage.shapeList[index].CurrentShapeData.columns; i++)
-                {
-                    for (int j = 0; j < shapeStorage.shapeList[index].CurrentShapeData.rows; j++)
-                    {
-                        tempData.board[i].column[j] = shapeStorage.shapeList[index].CurrentShapeData.board[j].column[i];
-                        shapeStorage.shapeList[index].CurrentShapeData.columns = tempData.columns;
-                        shapeStorage.shapeList[index].CurrentShapeData.rows = tempData.rows;
-                        shapeStorage.shapeList[index].CurrentShapeData = tempData;
-
-                    }
-                }
-
-                shapeStorage.shapeList[index].CurrentShapeData = tempData;
+                Rotate90(shapeStorage.shapeList[index].CurrentShapeData);
             }
-            
-           
+        }
+    }
 
-           
+    void Rotate90(ShapeData arr)
+    {
+        int n = arr.columns;
+
+
+        for (int i = 0; i < n; ++i)
+        {
+            for (var j = 0; j < i; ++j)
+            {
+                (arr.board[i].column[j], arr.board[j].column[i]) = (arr.board[j].column[i], arr.board[i].column[j]);
+            }
+        }
+
+
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < n / 2; ++j)
+            {
+                (arr.board[i].column[j], arr.board[i].column[n - j - 1]) =
+                    (arr.board[i].column[n - j - 1], arr.board[i].column[j]);
+            }
+
+            ;
         }
     }
 

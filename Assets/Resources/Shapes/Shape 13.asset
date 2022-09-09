@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Shape 13
   m_EditorClassIdentifier: 
   columns: 3
-  rows: 2
+  rows: 3
   board:
+  - column: 000000
   - column: 010000
   - column: 010101
