@@ -135,8 +135,8 @@ MonoBehaviour:
   hooverImage: {fileID: 2637748186394844059}
   normalImage: {fileID: 3270626527889469756}
   normalImages:
-  - {fileID: 21300000, guid: 61fe6ca34cd120e4b879abf37f29efdf, type: 3}
-  - {fileID: 21300000, guid: 390f6f568c11d3e43819bf2a828ffc7c, type: 3}
+  - {fileID: 21300000, guid: bfc6912f71ca7f240a2dd4b26c6c361e, type: 3}
+  - {fileID: 21300000, guid: 24c73f0787fd7564e81f20e5f68e13d7, type: 3}
 --- !u!212 &-4411589590616875511
 SpriteRenderer:
   m_ObjectHideFlags: 0
