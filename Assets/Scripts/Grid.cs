@@ -281,7 +281,10 @@ public class Grid : MonoBehaviour
                     for (int j = 0; j < shapeStorage.shapeList[index].CurrentShapeData.rows; j++)
                     {
                         tempData.board[i].column[j] = shapeStorage.shapeList[index].CurrentShapeData.board[j].column[i];
-                     
+                        shapeStorage.shapeList[index].CurrentShapeData.columns = tempData.columns;
+                        shapeStorage.shapeList[index].CurrentShapeData.rows = tempData.rows;
+                        shapeStorage.shapeList[index].CurrentShapeData = tempData;
+
                     }
                 }
 
