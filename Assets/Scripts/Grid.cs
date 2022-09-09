@@ -21,6 +21,8 @@ public class Grid : MonoBehaviour
 
     private LineIndicator _lineIndicator;
 
+    float bonus = 1f;
+
     IEnumerator co;
 
     CountDown countDown;
@@ -200,13 +202,16 @@ public class Grid : MonoBehaviour
         }
 
         var completedLines = ChechkIfSqauresAreCompleted(lines);
-        if (completedLines > 2)
+        if (completedLines >= 2)
         {
             //TODO: Play bonus animation.
+            bonus = completedLines*0.8f;
+            
         }
 
-        var totalScores = 10 * completedLines;
-        GameEvents.AddScores(totalScores);
+        var totalScores = 10 * completedLines*bonus;
+        bonus = 1f;
+        GameEvents.AddScores((int)totalScores);
         ChechkIfPlayerLost();
     }
 
