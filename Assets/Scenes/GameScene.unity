@@ -535,7 +535,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2130731343}
-        m_TargetAssemblyTypeName: a, Assembly-CSharp
+        m_TargetAssemblyTypeName: Rotater, Assembly-CSharp
         m_MethodName: Dondur
         m_Mode: 1
         m_Arguments:
@@ -1270,7 +1270,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 274248262}
-        m_TargetAssemblyTypeName: a, Assembly-CSharp
+        m_TargetAssemblyTypeName: Rotater, Assembly-CSharp
         m_MethodName: Dondur
         m_Mode: 1
         m_Arguments:
@@ -2108,9 +2108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aobject:
-  - {fileID: 2130731343}
-  - {fileID: 274248262}
-  - {fileID: 913858198}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   shapeStorage: {fileID: 283551951}
   columns: 9
   rows: 9
@@ -2736,7 +2736,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 913858198}
-        m_TargetAssemblyTypeName: a, Assembly-CSharp
+        m_TargetAssemblyTypeName: Rotater, Assembly-CSharp
         m_MethodName: Dondur
         m_Mode: 1
         m_Arguments:
