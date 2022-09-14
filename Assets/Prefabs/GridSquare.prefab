@@ -135,8 +135,8 @@ MonoBehaviour:
   hooverImage: {fileID: 2637748186394844059}
   normalImage: {fileID: 3270626527889469756}
   normalImages:
-  - {fileID: 21300000, guid: bfc6912f71ca7f240a2dd4b26c6c361e, type: 3}
-  - {fileID: 21300000, guid: 24c73f0787fd7564e81f20e5f68e13d7, type: 3}
+  - {fileID: 21300000, guid: f6206878847f1744d8c2d350eb9a9405, type: 3}
+  - {fileID: 21300000, guid: d6cccb333ed2708499f6b3621826f888, type: 3}
 --- !u!212 &-4411589590616875511
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c96a1d5e399a2649b60d2098b3699f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ebb1b06a0444b343ad5bac85a9d7204, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
