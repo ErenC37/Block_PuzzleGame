@@ -20,20 +20,6 @@ public class Scores : MonoBehaviour
     private string bestScoreKey_ = "bsdat";
 
 
-    private void Awake()
-    {
-        if(BinaryDataStream.Exist(bestScoreKey_))
-        {   
-            StartCoroutine(ReadDataFile());
-        }
-    }
-
-    private IEnumerator ReadDataFile()
-    {
-        bestScores_ = BinaryDataStream.Read<BestScoreData>(bestScoreKey_);
-        yield return new WaitForEndOfFrame();
-    }
-
     void Start()
     {
         currentScores_ = 0;
@@ -45,28 +31,19 @@ public class Scores : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.AddScores += AddScores;
-        GameEvents.GameOver += SaveBestScores;
     }
 
     private void OnDisable()
     {
         GameEvents.AddScores -= AddScores;
-        GameEvents.GameOver -= SaveBestScores;
-    }
-
-    public void SaveBestScores(bool newBestScores)
-    {
-        BinaryDataStream.Save<BestScoreData>(bestScores_, bestScoreKey_);
     }
 
     private void AddScores(int socres)
     {
         currentScores_ += socres;
         if(currentScores_ > bestScores_.score)
-        {
-          
             bestScores_.score = currentScores_;
-        }
+        
         UpdateScoreText();
     }
 
