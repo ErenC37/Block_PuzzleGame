@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    public a[] aobject;
+    public Rotater[] aobject;
     public ShapeStorage shapeStorage;
     public int columns = 0;
     public int rows = 0;
