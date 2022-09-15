@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,6 +11,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public GameObject squareShapeImage;
     public Vector3 shapeSelectedScale;
     public Vector2 offset = new Vector2(0f, 700f);
+    private Vector3 parmak = new Vector3(0, 200f, 0);
 
     [HideInInspector] public ShapeData CurrentShapeData;
 
@@ -22,10 +24,9 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private Canvas _canvas;
     private Vector3 _startPosition;
     private bool _shapeActive = true;
-
     public int num;
 
-    
+
 
     public void Awake()
     {
@@ -36,7 +37,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         _startPosition = _transform.localPosition;
         _shapeActive = true;
         gridObject = FindObjectOfType<Grid>();
-      
+
     }
 
     private void OnEnable()
@@ -108,15 +109,15 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void RequestNewShape(ShapeData shapeData) //*********************************************************
     {
-        
-        
+
+
         _transform.localPosition = _startPosition;
         CreateShape(shapeData);
     }
 
 
-    
-    
+
+
 
     public void CreateShape(ShapeData shapeData)
     {
@@ -308,13 +309,17 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     {
         _transform.anchorMin = new Vector2(0, 0);
         _transform.anchorMax = new Vector2(0, 0);
-        _transform.pivot = new Vector2(0, -1.45f);
+        _transform.pivot = new Vector2(0, 0);
+
 
         Vector2 pos;
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
             eventData.position, Camera.main, out pos);
 
         _transform.localPosition = pos + offset;
+        _transform.localPosition += parmak;
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
