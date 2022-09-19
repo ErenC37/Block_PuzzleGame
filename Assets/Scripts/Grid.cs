@@ -20,6 +20,7 @@ public class Grid : MonoBehaviour
     private List<GameObject> _gridSquares = new List<GameObject>();
 
     private LineIndicator _lineIndicator;
+    
 
     float bonus = 1f;
 
@@ -206,7 +207,7 @@ public class Grid : MonoBehaviour
         {
             //TODO: Play bonus animation.
             bonus = completedLines*0.8f;
-            
+
         }
 
         var totalScores = 10 * completedLines*bonus;
