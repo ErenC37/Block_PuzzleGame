@@ -11,7 +11,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public GameObject squareShapeImage;
     public Vector3 shapeSelectedScale;
     public Vector2 offset = new Vector2(0f, 700f);
-    private Vector3 parmak = new Vector3(0, 200f, 0);
+    private Vector3 parmak = new Vector3(0, 250f, 0);
 
     [HideInInspector] public ShapeData CurrentShapeData;
 

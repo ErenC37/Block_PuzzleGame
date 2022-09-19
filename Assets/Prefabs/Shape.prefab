@@ -53,3 +53,4 @@ MonoBehaviour:
   shapeSelectedScale: {x: 0.8, y: 0.8, z: 0.8}
   offset: {x: 0, y: 700}
   CurrentShapeData: {fileID: 11400000, guid: 5c4c160873afd7e448655571c6b4db66, type: 2}
+  num: 0
