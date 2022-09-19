@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip popSound, sparkle;
+    public AudioClip popSound, sparkle;
     static AudioSource AudioSrc;
 
     void Start()
     {
-        popSound = ResourcesScope.Load<AudioClip>("pop");
-        sparkle= ResourcesScope.Load<AudioClip>("sparkle");
+        // popSound = Resources.Load<AudioClip>("pop");
+        // sparkle= Resources.Load<AudioClip>("sparkle");
     }
 
     

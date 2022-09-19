@@ -1,32 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Grid : MonoBehaviour
 {
-    public Rotater[] aobject;
-    public ShapeStorage shapeStorage;
+    [SerializeField] private ShapeStorage shapeStorage;
     public int columns = 0;
     public int rows = 0;
     public float squaresGap = 0.1f;
-    public GameObject gridSquare;
+    public GridSquare gridSquare;
     public Vector2 startPosition = new Vector2(0.0f, 0.0f);
     public float squareScale = 0.5f;
     public float everySquareOffset = 0.0f;
 
-    int shapeIndexToChange;
+    private int shapeIndexToChange;
 
     private Vector2 _offset = new Vector2(0.0f, 0.0f);
-    private List<GameObject> _gridSquares = new List<GameObject>();
+    private List<GridSquare> _gridSquares = new List<GridSquare>();
 
-    private LineIndicator _lineIndicator;
-    
+    [SerializeField] private LineIndicator LineIndicator;
 
-    float bonus = 1f;
 
-    IEnumerator co;
+    private float bonus = 1f;
 
-    CountDown countDown;
+    private IEnumerator co;
+
+    [SerializeField] private CountDown countDown;
+
 
     private void OnEnable()
     {
@@ -38,16 +39,8 @@ public class Grid : MonoBehaviour
         GameEvents.CheckIfShapeCanBePlaced -= CheckIfShapeCanBePlaced;
     }
 
-    void Awake()
-    {
-        shapeStorage = FindObjectOfType<ShapeStorage>();
-        countDown = FindObjectOfType<CountDown>();
-    }
-
-
     void Start()
     {
-        _lineIndicator = GetComponent<LineIndicator>();
         CreateGrid();
     }
 
@@ -64,18 +57,20 @@ public class Grid : MonoBehaviour
 
         int square_index = 0;
 
+        GridSquare tempGridSquare = null;
+        Vector3 tempScale = new Vector3(squareScale, squareScale, squareScale);
+
         for (var row = 0; row < rows; ++row)
         {
             for (var column = 0; column < columns; ++column)
             {
-                _gridSquares.Add(Instantiate(gridSquare) as GameObject);
+                tempGridSquare = Instantiate(gridSquare);
+                _gridSquares.Add(tempGridSquare);
 
-                _gridSquares[_gridSquares.Count - 1].GetComponent<GridSquare>().SquareIndex = square_index;
+                tempGridSquare.SquareIndex = square_index;
                 _gridSquares[_gridSquares.Count - 1].transform.SetParent(this.transform);
-                _gridSquares[_gridSquares.Count - 1].transform.localScale =
-                    new Vector3(squareScale, squareScale, squareScale);
-                _gridSquares[_gridSquares.Count - 1].GetComponent<GridSquare>()
-                    .SetImage(_lineIndicator.GetGridSquareIndex(square_index) % 2 == 0);
+                _gridSquares[_gridSquares.Count - 1].transform.localScale = tempScale;
+                tempGridSquare.SetImage(LineIndicator.GetGridSquareIndex(square_index) % 2 == 0);
                 square_index++;
             }
         }
@@ -93,7 +88,7 @@ public class Grid : MonoBehaviour
         _offset.x = square_rect.rect.width * square_rect.transform.localScale.x + everySquareOffset;
         _offset.y = square_rect.rect.height * square_rect.transform.localScale.y + everySquareOffset;
 
-        foreach (GameObject square in _gridSquares)
+        foreach (GridSquare square in _gridSquares)
         {
             if (column_number + 1 > columns)
             {
@@ -142,13 +137,10 @@ public class Grid : MonoBehaviour
 
         foreach (var square in _gridSquares)
         {
-            var gridSquare = square.GetComponent<GridSquare>();
-
-            if (gridSquare.Selected && !gridSquare.SquareOccupied)
+            if (square.Selected && !square.SquareOccupied)
             {
-                squareIndexes.Add(gridSquare.SquareIndex);
-                gridSquare.Selected = false;
-                // gridSquare.ActiveSquare();
+                squareIndexes.Add(square.SquareIndex);
+                square.Selected = false;
             }
         }
 
@@ -158,9 +150,7 @@ public class Grid : MonoBehaviour
         if (currentSelectedShape.TotalSquareNumber == squareIndexes.Count)
         {
             foreach (var SquareIndex in squareIndexes)
-            {
-                _gridSquares[SquareIndex].GetComponent<GridSquare>().PlaceShapeOnBoard();
-            }
+                _gridSquares[SquareIndex].PlaceShapeOnBoard();
 
 
             foreach (var shape in shapeStorage.shapeList)
@@ -191,13 +181,12 @@ public class Grid : MonoBehaviour
 
         //squares
 
+        List<int> data = new List<int>(9);
         for (var square = 0; square < 9; square++)
         {
-            List<int> data = new List<int>(9);
+            data.Clear();
             for (var index = 0; index < 9; index++)
-            {
-                data.Add(_lineIndicator.square_data[square, index]);
-            }
+                data.Add(LineIndicator.square_data[square, index]);
 
             lines.Add(data.ToArray());
         }
@@ -206,11 +195,10 @@ public class Grid : MonoBehaviour
         if (completedLines >= 2)
         {
             //TODO: Play bonus animation.
-            bonus = completedLines*0.8f;
-
+            bonus = completedLines * 0.8f;
         }
 
-        var totalScores = 10 * completedLines*bonus;
+        var totalScores = 10 * completedLines * bonus;
         bonus = 1f;
         GameEvents.AddScores((int)totalScores);
         ChechkIfPlayerLost();
@@ -222,22 +210,18 @@ public class Grid : MonoBehaviour
 
         var linesCompleted = 0;
 
-        foreach (var line in data)
+        foreach (int[] line in data)
         {
-            var lineCompleted = true;
-            foreach (var squareIndex in line)
+            bool lineCompleted = true;
+            foreach (int squareIndex in line)
             {
-                var comp = _gridSquares[squareIndex].GetComponent<GridSquare>();
+                GridSquare comp = _gridSquares[squareIndex];
                 if (comp.SquareOccupied == false)
-                {
                     lineCompleted = false;
-                }
             }
 
             if (lineCompleted)
-            {
                 completedLines.Add(line);
-            }
         }
 
         foreach (var line in completedLines)
@@ -246,21 +230,19 @@ public class Grid : MonoBehaviour
 
             foreach (var squareIndex in line)
             {
-                var comp = _gridSquares[squareIndex].GetComponent<GridSquare>();
+                var comp = _gridSquares[squareIndex];
                 comp.Deactivate();
                 completed = true;
             }
 
             foreach (var squareIndex in line)
             {
-                var comp = _gridSquares[squareIndex].GetComponent<GridSquare>();
+                var comp = _gridSquares[squareIndex];
                 comp.ClearOccupied();
             }
 
             if (completed)
-            {
                 linesCompleted++;
-            }
         }
 
         return linesCompleted;
@@ -269,12 +251,8 @@ public class Grid : MonoBehaviour
     private void Rotater()
     {
         for (var index = 0; index < shapeStorage.shapeList.Count; index++)
-        {
             if (shapeStorage.shapeList[index].CurrentShapeData)
-            {
                 Rotate90(shapeStorage.shapeList[index].CurrentShapeData);
-            }
-        }
     }
 
     void Rotate90(ShapeData arr)
@@ -298,8 +276,6 @@ public class Grid : MonoBehaviour
                 (arr.board[i].column[j], arr.board[i].column[n - j - 1]) =
                     (arr.board[i].column[n - j - 1], arr.board[i].column[j]);
             }
-
-            ;
         }
     }
 
@@ -337,8 +313,6 @@ public class Grid : MonoBehaviour
                 GameEvents.GameOver(false);
                 countDown.coUpdate();
             }
-
-           
         }
     }
 
@@ -377,17 +351,13 @@ public class Grid : MonoBehaviour
             bool shapeCanBePlacedOnTheBoard = true;
             foreach (var squareIndexToCheck in originalShapeFilledUpSquares)
             {
-                var comp = _gridSquares[number[squareIndexToCheck]].GetComponent<GridSquare>();
+                GridSquare comp = _gridSquares[number[squareIndexToCheck]];
                 if (comp.SquareOccupied)
-                {
                     shapeCanBePlacedOnTheBoard = false;
-                }
             }
 
             if (shapeCanBePlacedOnTheBoard)
-            {
                 canBePlaced = true;
-            }
         }
 
         return canBePlaced;
@@ -407,16 +377,17 @@ public class Grid : MonoBehaviour
         var lastRowIndex = 0;
 
         int safeIndex = 0;
+        List<int> rowData = new List<int>();
 
         while (lastRowIndex + (rows - 1) < 9)
         {
-            var rowData = new List<int>();
+            rowData.Clear();
 
             for (var row = lastRowIndex; row < lastRowIndex + rows; row++)
             {
                 for (var column = lastColumnIndex; column < lastColumnIndex + columns; column++)
                 {
-                    rowData.Add(_lineIndicator.line_data[row, column]);
+                    rowData.Add(LineIndicator.line_data[row, column]);
                 }
             }
 
