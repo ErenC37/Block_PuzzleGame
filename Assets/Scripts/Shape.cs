@@ -27,7 +27,6 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public int num;
 
 
-
     public void Awake()
     {
         _shapeStartScale = this.GetComponent<RectTransform>().localScale;
@@ -37,7 +36,6 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         _startPosition = _transform.localPosition;
         _shapeActive = true;
         gridObject = FindObjectOfType<Grid>();
-
     }
 
     private void OnEnable()
@@ -128,9 +126,10 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
             square.gameObject.SetActive(false);
         }
 
-        var squareRect = squareShapeImage.GetComponent<RectTransform>(); 
+        var squareRect = squareShapeImage.GetComponent<RectTransform>();
         var moveDistance = new Vector2(squareRect.rect.width * squareRect.localScale.x * 0.8f,
-            squareRect.rect.height * squareRect.localScale.y * 0.8f); //þeklin durduðu zemin üzerindeki aralýklarý ayarlayan kýsým
+            squareRect.rect.height * squareRect.localScale.y *
+            0.8f); //þeklin durduðu zemin üzerindeki aralýklarý ayarlayan kýsým
 
         int currentIndexInList = 0;
 
@@ -295,8 +294,9 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        this.GetComponent<RectTransform>().localScale = shapeSelectedScale * 1.15f;  //þeklin ele alýndýktan sonraki boyutunu deðiþtiren kýsým.
-        FindObjectOfType<AudioManager>().Play("pop"); //0000000000000000000000000000000000000000000000000000
+        this.GetComponent<RectTransform>().localScale =
+            shapeSelectedScale * 1.15f; //þeklin ele alýndýktan sonraki boyutunu deðiþtiren kýsým.
+        AudioManager.instance.Play("pop");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -313,12 +313,12 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
         _transform.localPosition = pos + offset;
         _transform.localPosition += parmak;
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.GetComponent<RectTransform>().localScale = _shapeStartScale;   //ilk þekilden sonra gelen þeklin boyutunu deðiþtir
+        this.GetComponent<RectTransform>().localScale =
+            _shapeStartScale; //ilk þekilden sonra gelen þeklin boyutunu deðiþtir
         if (gameObject.name == "Shape")
         {
             num = 0;
@@ -331,7 +331,8 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         {
             num = 2;
         }
-        FindObjectOfType<AudioManager>().Play("pop"); //0000000000000000000000000000000000000000000000000000
+
+        AudioManager.instance.Play("pop");
         gridObject.callis(num);
         GameEvents.CheckIfShapeCanBePlaced();
     }
