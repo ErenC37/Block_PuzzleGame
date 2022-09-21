@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c86f1b0e698fb84b8f8c955987b2a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  squareShapeImage: {fileID: 6977199825141357295, guid: 79c2094e54f48db45b2097e2feade5bd, type: 3}
+  squareShapeImage: {fileID: 2467978945739175779, guid: 79c2094e54f48db45b2097e2feade5bd, type: 3}
   shapeSelectedScale: {x: 0.8, y: 0.8, z: 0.8}
   offset: {x: 0, y: 700}
   CurrentShapeData: {fileID: 11400000, guid: 5c4c160873afd7e448655571c6b4db66, type: 2}

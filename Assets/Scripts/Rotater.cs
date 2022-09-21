@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class Rotater : MonoBehaviour
 {
-   
+
     public void Dondur() => transform.Rotate(0, 0, -90);
-    
-    
-    
-    
+
 }

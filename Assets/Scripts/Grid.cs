@@ -85,7 +85,7 @@ public class Grid : MonoBehaviour
 
         var square_rect = _gridSquares[0].GetComponent<RectTransform>();
 
-        _offset.x = square_rect.rect.width * square_rect.transform.localScale.x + everySquareOffset;
+        _offset.x = square_rect.rect.width * square_rect.transform.localScale.x + everySquareOffset; //her bir grid arası boşluk 
         _offset.y = square_rect.rect.height * square_rect.transform.localScale.y + everySquareOffset;
 
         foreach (GridSquare square in _gridSquares)
