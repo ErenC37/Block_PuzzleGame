@@ -195,6 +195,7 @@ public class Grid : MonoBehaviour
         if (completedLines >= 2)
         {
             //TODO: Play bonus animation.
+            AudioManager.instance.Play("Spark");
             bonus = completedLines * 0.8f;
         }
 
