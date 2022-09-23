@@ -7,14 +7,14 @@ public class Scores : MonoBehaviour
 {
     public Text socreText;
 
-    private int currentScores_;
+    public static int currentScores_;
 
     void Start()
     {
         currentScores_ = 0;
-        
+
         UpdateScoreText();
-        
+
     }
 
     private void OnEnable()
@@ -29,7 +29,7 @@ public class Scores : MonoBehaviour
 
     private void AddScores(int socres)
     {
-        currentScores_ += socres;  
+        currentScores_ += socres;
         UpdateScoreText();
     }
 
