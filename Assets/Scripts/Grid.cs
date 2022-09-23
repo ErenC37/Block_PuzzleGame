@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,6 +29,7 @@ public class Grid : MonoBehaviour
 
     [SerializeField] private CountDown countDown;
 
+    [SerializeField] private GameObject ObjPuffParticle;
 
     private void OnEnable()
     {
@@ -85,7 +87,8 @@ public class Grid : MonoBehaviour
 
         var square_rect = _gridSquares[0].GetComponent<RectTransform>();
 
-        _offset.x = square_rect.rect.width * square_rect.transform.localScale.x + everySquareOffset; //her bir grid arası boşluk 
+        _offset.x = square_rect.rect.width * square_rect.transform.localScale.x +
+                    everySquareOffset; //her bir grid arası boşluk 
         _offset.y = square_rect.rect.height * square_rect.transform.localScale.y + everySquareOffset;
 
         foreach (GridSquare square in _gridSquares)
@@ -225,6 +228,9 @@ public class Grid : MonoBehaviour
                 completedLines.Add(line);
         }
 
+        GameObject tempParticle;
+        Vector3 tempScale = new Vector3(.5f, .5f, .5f);
+
         foreach (var line in completedLines)
         {
             var completed = false;
@@ -233,6 +239,11 @@ public class Grid : MonoBehaviour
             {
                 var comp = _gridSquares[squareIndex];
                 comp.Deactivate();
+
+                tempParticle = Instantiate(ObjPuffParticle, comp.gameObject.transform.position, quaternion.identity);
+                tempParticle.transform.localScale = tempScale;
+                Destroy(tempParticle, 1f);
+
                 completed = true;
             }
 
