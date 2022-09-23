@@ -229,7 +229,7 @@ public class Grid : MonoBehaviour
         }
 
         GameObject tempParticle;
-        Vector3 tempScale = new Vector3(.5f, .5f, .5f);
+        Vector3 tempScale = new Vector3(.1f, .1f, .1f);
 
         foreach (var line in completedLines)
         {
@@ -241,7 +241,9 @@ public class Grid : MonoBehaviour
                 comp.Deactivate();
 
                 tempParticle = Instantiate(ObjPuffParticle, comp.gameObject.transform.position, quaternion.identity);
+                tempParticle.transform.position += new Vector3(0,0,-50);
                 tempParticle.transform.localScale = tempScale;
+                AudioManager.instance.Play("smoke");
                 Destroy(tempParticle, 1f);
 
                 completed = true;

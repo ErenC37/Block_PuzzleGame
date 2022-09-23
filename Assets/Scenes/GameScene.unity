@@ -613,7 +613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ea3790f74939d84d9537628b1d811ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 483c1af6cfc868b4c9960a94feb979ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ea3790f74939d84d9537628b1d811ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 483c1af6cfc868b4c9960a94feb979ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1829,6 +1829,14 @@ MonoBehaviour:
   - name: Button
     clip: {fileID: 8300000, guid: aa92adbe18fdb324a8c286ceeb8a8c14, type: 3}
     volume: 1
+    source: {fileID: 0}
+  - name: Saat
+    clip: {fileID: 8300000, guid: 24e1f9ece0fc2d845a0ede3a35382658, type: 3}
+    volume: 0.507
+    source: {fileID: 0}
+  - name: smoke
+    clip: {fileID: 8300000, guid: 82bf1917e18050046adce2d11a95257e, type: 3}
+    volume: 0.507
     source: {fileID: 0}
 --- !u!1 &1319313658
 GameObject:
@@ -2258,7 +2266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1643170189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2668,7 +2676,7 @@ MonoBehaviour:
   everySquareOffset: 0.2
   LineIndicator: {fileID: 1759769984}
   countDown: {fileID: 761781902}
-  ObjPuffParticle: {fileID: 395031058680739610, guid: b2f0b8902a31c8a46a1c4bb24ed9ea36, type: 3}
+  ObjPuffParticle: {fileID: 1688076354444117600, guid: f0ad7a5f1c59e164aa62b3689281c0f8, type: 3}
 --- !u!114 &1759769984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3242,7 +3250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ea3790f74939d84d9537628b1d811ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 483c1af6cfc868b4c9960a94feb979ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

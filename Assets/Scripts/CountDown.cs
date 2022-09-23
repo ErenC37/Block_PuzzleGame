@@ -38,6 +38,10 @@ public class CountDown : MonoBehaviour
         {
            GameEvents.GameOver(false);
         }
+        if (_currentTime == 5)
+        {
+            AudioManager.instance.Play("Saat");
+        }
 
     }
 
