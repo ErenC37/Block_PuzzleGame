@@ -2668,7 +2668,6 @@ MonoBehaviour:
   everySquareOffset: 0.2
   LineIndicator: {fileID: 1759769984}
   countDown: {fileID: 761781902}
-  ObjPuffParticle: {fileID: 395031058680739610, guid: b2f0b8902a31c8a46a1c4bb24ed9ea36, type: 3}
 --- !u!114 &1759769984
 MonoBehaviour:
   m_ObjectHideFlags: 0
