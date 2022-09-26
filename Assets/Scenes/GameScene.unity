@@ -1839,9 +1839,9 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: smoke
-    clip: {fileID: 8300000, guid: 1494028bbe0f8c9438c7e27efd80d32e, type: 3}
-    volume: 0.33
-    pitch: 0.55
+    clip: {fileID: 8300000, guid: 75a9526157276d643bddaf8f47587d0a, type: 3}
+    volume: 0.7
+    pitch: 1
     source: {fileID: 0}
 --- !u!1 &1319313658
 GameObject:

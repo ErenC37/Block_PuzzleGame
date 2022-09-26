@@ -286,17 +286,19 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnPointerClick(PointerEventData eventData)
     {
+       
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        AudioManager.instance.Play("pop");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         this.GetComponent<RectTransform>().localScale =
             shapeSelectedScale * 1.15f; //þeklin ele alýndýktan sonraki boyutunu deðiþtiren kýsým.
-        AudioManager.instance.Play("pop");
+        //AudioManager.instance.Play("pop");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -332,13 +334,14 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
             num = 2;
         }
 
-        AudioManager.instance.Play("pop");
+        //AudioManager.instance.Play("pop");
         gridObject.callis(num);
         GameEvents.CheckIfShapeCanBePlaced();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        AudioManager.instance.Play("pop");
     }
 
     private void MoveShapeToStartPosition()

@@ -243,7 +243,7 @@ public class Grid : MonoBehaviour
                 tempParticle = Instantiate(ObjPuffParticle, comp.gameObject.transform.position, quaternion.identity);
                 tempParticle.transform.position += new Vector3(0,0,-50);
                 tempParticle.transform.localScale = tempScale;
-                AudioManager.instance.Play("smoke");
+                AudioManager.instance.Play("smoke"); //*************************************************************
                 Destroy(tempParticle, 1f);
 
                 completed = true;
