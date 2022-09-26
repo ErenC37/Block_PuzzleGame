@@ -736,7 +736,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6649bcecaad3b5748a9739599ef49554, type: 3}
@@ -1821,22 +1821,27 @@ MonoBehaviour:
   - name: pop
     clip: {fileID: 8300000, guid: 1494028bbe0f8c9438c7e27efd80d32e, type: 3}
     volume: 0.33
+    pitch: 1
     source: {fileID: 0}
   - name: Spark
     clip: {fileID: 8300000, guid: 97d9ad5d5a10a7d4a95b548f8270e887, type: 3}
-    volume: 0.46
+    volume: 0.35
+    pitch: 1
     source: {fileID: 0}
   - name: Button
     clip: {fileID: 8300000, guid: aa92adbe18fdb324a8c286ceeb8a8c14, type: 3}
     volume: 1
+    pitch: 1
     source: {fileID: 0}
   - name: Saat
     clip: {fileID: 8300000, guid: 24e1f9ece0fc2d845a0ede3a35382658, type: 3}
     volume: 0.507
+    pitch: 1
     source: {fileID: 0}
   - name: smoke
-    clip: {fileID: 8300000, guid: 82bf1917e18050046adce2d11a95257e, type: 3}
-    volume: 0.507
+    clip: {fileID: 8300000, guid: 1494028bbe0f8c9438c7e27efd80d32e, type: 3}
+    volume: 0.33
+    pitch: 0.55
     source: {fileID: 0}
 --- !u!1 &1319313658
 GameObject:
