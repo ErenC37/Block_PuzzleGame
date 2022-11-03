@@ -71,7 +71,7 @@ public class Grid : MonoBehaviour
 
                 tempGridSquare.SquareIndex = square_index;
                 _gridSquares[_gridSquares.Count - 1].transform.SetParent(this.transform);
-                _gridSquares[_gridSquares.Count - 1].transform.localScale = tempScale;
+               _gridSquares[_gridSquares.Count - 1].transform.localScale = tempScale;
                 tempGridSquare.SetImage(LineIndicator.GetGridSquareIndex(square_index) % 2 == 0);
                 square_index++;
             }
